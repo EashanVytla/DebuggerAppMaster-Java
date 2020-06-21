@@ -99,12 +99,13 @@ public class DAMForm {
             @Override
             public void windowClosing(WindowEvent windowEvent) {
                 try {
-                    stopper = true;
-                    System.out.println("Safely Stopped");
-                    Thread.sleep(250);
-                    runningLoop = false;
-                    adaptiveOpMode.Robot.msngr.stop();
-                    System.exit(0);
+                    if(mAppState == State.STATE_START){
+                        stopper = true;
+                        System.out.println("Safely Stopped");
+                        Thread.sleep(250);
+                        runningLoop = false;
+                        adaptiveOpMode.Robot.msngr.stop();
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
